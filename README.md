@@ -16,7 +16,7 @@ Vite đọc biến môi trường `VITE_API_BASE_URL` từ `.env.development`. F
 Hàm `getMyChildrenReports` trong `src/api/reports.js` gọi đúng `GET /reports/my-children`, gửi JWT bằng header `Authorization: Bearer ...`, và trả về `data.reports`. Ví dụ dùng trong component React:
 
 ```jsx
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react' 
 import { getMyChildrenReports } from './api/reports'
 
 function ChildReports({ token }) {
