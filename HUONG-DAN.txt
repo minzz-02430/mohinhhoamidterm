@@ -1,0 +1,62 @@
+HÒA MA TOÁN CRM - BẢN DEMO (cập nhật theo bản audit 14/11/2026)
+================================================================
+
+CÁCH MỞ NHANH (không cần cài gì, không cần mạng)
+1. Bấm đúp file "Hoa-Ma-Toan-CRM.html". Mở bằng Chrome, Edge, Cốc Cốc, Firefox hoặc Safari.
+2. Ở màn đăng nhập, bấm một nút vai trò trong khung "Chế độ demo" để điền sẵn tài khoản, rồi bấm "Đăng nhập".
+
+TÀI KHOẢN DEMO (mật khẩu chung: 123456)
+- admin     Ban giám đốc    Nguyễn Thu Hà   (toàn hệ thống, 5 cơ sở)
+- quanly    Quản lý cơ sở   Trần Minh Quân  (cơ sở Nguyễn Chí Thanh)
+- giaovien  Giáo viên       Trần Văn Anh    (lớp Toán 8 nâng cao, Luyện thi vào 10)
+- ketoan    Kế toán         Vũ Lan
+- phuhuynh  Phụ huynh       Lê Thị Mai      (con: Lê Minh Anh, Lê Bảo Nam)
+Vai trò lấy từ tài khoản. Không còn ô chọn vai trò và không tự đổi vai trò được.
+
+KỊCH BẢN TRÌNH BÀY 5 PHÚT (các vai trò tương tác với nhau)
+Mẹo: mở file ở 2 cửa sổ cạnh nhau, mỗi cửa sổ đăng nhập một vai trò, dữ liệu tự đồng bộ.
+1. Phụ huynh > Học phí: hóa đơn 2.300.000 đ (12 x 200.000 - 200.000 + 100.000)
+   > "Thanh toán VietQR" > quét mã > "Tôi đã chuyển khoản".
+2. Quản lý: chuông có số đỏ > bấm thông báo > Tài chính > Công nợ học phí > "Xác nhận đã nhận".
+   Doanh thu trên Dashboard và Tài chính tăng đúng 2.300.000 đ; phụ huynh nhận thông báo.
+3. Giáo viên > Điểm danh & nhận xét: nhập nhận xét, "Gửi phụ huynh".
+   Phụ huynh thấy ngay ở mục Kết quả. Giáo viên > Đề xuất dạy bù/thay: gửi đề xuất (chọn lớp Luyện thi vào 10).
+4. Quản lý > Học vụ & Đào tạo > tab "Đề xuất dạy bù": chọn phòng trống > "Duyệt".
+   Lịch tự thêm vào thời khóa biểu; giáo viên và phụ huynh nhận thông báo.
+5. Ban giám đốc > Cài đặt > "Tài khoản & phân quyền" > "Tạo tài khoản" (mật khẩu tạm, buộc đổi lần đầu).
+   > Công việc > "Giao việc" cho quản lý. > Báo cáo > "Xuất báo cáo" (file CSV mở bằng Excel).
+Thêm: Tin nhắn giữa phụ huynh - giáo viên - quản lý; trợ lý chat gõ "Con tôi ốm, xin nghỉ học".
+
+TÍNH NĂNG KHÁC CÓ THỂ TRÌNH BÀY
+- Nhân sự > "Lịch trực": lưới tuần x ca, tự báo khi một người trực nhiều ca trong ngày.
+  "Nhập danh sách": đọc file CSV (dùng file từ nút "Xuất danh sách" làm mẫu).
+- CSKH > "Kịch bản tự động": bật/tắt, xem trước tin ZNS/SMS. "Gia hạn khóa học": tỷ lệ tái đăng ký.
+- CRM > "Danh sách lead": tích chọn nhiều dòng để chuyển giai đoạn hoặc xuất CSV; phân trang 5/10/20.
+- Tài chính: sửa phiếu bằng nút bút chì; xóa nhầm thì bấm "Hoàn tác" trên thông báo.
+- Ban giám đốc > bấm tên ở góc phải > "Xem với tư cách" để xem màn hình vai trò khác (chỉ đọc).
+
+LƯU Ý
+- Dữ liệu là dữ liệu demo, lưu trong trình duyệt của từng máy.
+- Trả dữ liệu về ban đầu: đăng nhập admin > Cài đặt > "Khôi phục dữ liệu demo".
+- Biểu tượng và biểu đồ đã nằm trong file nên chạy được khi mất mạng. Không có mạng thì chữ dùng
+  phông mặc định của máy thay cho Be Vietnam Pro.
+- Mã VietQR được tạo ngay trên máy theo tài khoản nhận cấu hình ở Cài đặt (đang là số tài khoản mẫu).
+  Trước khi cho người khác quét thật, Ban giám đốc đổi sang tài khoản thật của trung tâm.
+- Có mạng thì mã VietQR lấy từ dịch vụ VietQR; mất mạng thì tự tạo ngay trên máy (hiện nhãn "Chế độ ngoại tuyến").
+- Bản một file chạy hoàn toàn trên trình duyệt. Phân quyền được kiểm tra trong ứng dụng; phần máy chủ kiểm tra
+  quyền nằm trong "Hoa-Ma-Toan-backend.zip" (chưa nối với giao diện này).
+
+DÀNH CHO NGƯỜI LẬP TRÌNH (file "Hoa-Ma-Toan-CRM-ma-nguon.zip")
+Cần Node.js 20 trở lên. Giải nén rồi chạy trong thư mục dự án:
+    npm install
+    npm run dev
+Kiểm thử logic:      node --test src/modules/store.test.js
+Đóng gói một file:   npm run build   rồi   python pack-single-file.py Hoa-Ma-Toan-CRM.html
+Mã cũ (HTML tĩnh) đã chuyển vào thư mục legacy/ và không còn được dùng.
+
+BACKEND (file "Hoa-Ma-Toan-backend.zip") - Express + MySQL, phân quyền theo vai trò và cơ sở
+Cần Node.js 20 và MySQL. Tạo file .env theo .env.example, nạp database_production.sql, rồi:
+    npm install
+    npm test        (9 bài kiểm thử, không cần database thật)
+    node app.js
+Chi tiết endpoint và migration: xem mục "Phân quyền theo bản audit" trong README.md của backend.
